@@ -2,7 +2,13 @@
 
 	<div class="home">
 		<NavBar />
-		<ListPokemon />
+		<div class="main">
+			<Sidebar />
+			<div>
+				<Slider />
+				<ListPokemon />
+			</div>
+		</div>
 	</div>
 
 </template>
@@ -11,6 +17,8 @@
 
 import NavBar from '@/components/NavBar.vue'
 import ListPokemon from '@/components/ListPokemon.vue'
+import Slider from '@/components/Slider.vue'
+import Sidebar from '@/components/Sidebar.vue'
 
 export default {
 
@@ -18,8 +26,18 @@ export default {
 
 	components: {
 		NavBar,
-		ListPokemon
+		ListPokemon,
+		Slider,
+		Sidebar
 	}
 }
 
 </script>
+
+<style lang="scss" scoped>
+
+.main {
+	display: flex;
+}
+
+</style>

@@ -1,14 +1,15 @@
 <template>
-    
     <div class="list-pokemon">
-        <div v-for="(pokemon, i) in pokemons" :key="i">
+        <div class="card-pokemon" v-for="(pokemon, i) in pokemons" :key="i">
+            <!-- <div class="background"> -->
+                <div class="image">
+                    <img :src="pokemon.sprites.front_default"
+                    :alt="pokemon.name">
+                </div>
+            <!-- </div> -->
+
             <div class="name">
                 {{ pokemon.name }}
-            </div>
-
-            <div class="image">
-                <img :src="pokemon.sprites.front_default"
-                :alt="pokemon.name">
             </div>
 
             <div class="types" v-for="(type, i) in pokemon.types" :key="i">
@@ -18,20 +19,15 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
-
     name: 'ListPokemon',
 
     data: () => ({
-
         pokemons: []
-
     }),
 
     created() {
@@ -39,27 +35,50 @@ export default {
     },
 
     methods: {
-
         fetchPokemon() {
+            const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`;
 
-            const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
-
-            const pokemonPromises = []
+            const pokemonPromises = [];
 
             for (let i = 1; i <= 150; i++) {
-                pokemonPromises.push(fetch(getPokemonUrl(i)).then(response => response.json()))
+                pokemonPromises.push(fetch(getPokemonUrl(i)).then(response => response.json()));
             }
 
             Promise.all(pokemonPromises)
                 .then(pokemons => {
-                    this.pokemons = pokemons
-                    console.log(this.pokemons)
-                })
+                    this.pokemons = pokemons;
+                });
+        }
+    }
+}
+</script>
 
+<style lang="scss" scoped>
+
+.list-pokemon {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 30px;
+
+    .card-pokemon {
+        border-radius: 10px;
+        box-shadow: 0px 0px 8px 0px #000;
+        width: 100%;
+        text-align: center;
+        min-height: 300px;
+
+        .background {
+            width: 100%;
+            height: 100px;
+            background-color: #000;
+            border-radius: 0 0 500px 500px;
         }
 
+        .image img {
+            width: 200px;
+        }
     }
-
 }
 
-</script>
+</style>
