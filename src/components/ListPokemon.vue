@@ -1,7 +1,22 @@
 <template>
     
-    <div>
-        {{ pokemons }}
+    <div class="list-pokemon">
+        <div v-for="(pokemon, i) in pokemons" :key="i">
+            <div class="name">
+                {{ pokemon.name }}
+            </div>
+
+            <div class="image">
+                <img :src="pokemon.sprites.front_default"
+                :alt="pokemon.name">
+            </div>
+
+            <div class="types" v-for="(type, i) in pokemon.types" :key="i">
+                <div v-for="(type_name, i) in type" :key="i">
+                    {{ type_name.name }}
+                </div>
+            </div>
+        </div>
     </div>
 
 </template>
@@ -20,21 +35,26 @@ export default {
     }),
 
     created() {
-        this.loadListPokemon();
+        this.fetchPokemon();
     },
 
     methods: {
 
-        loadListPokemon(limit = 50, offset = 0) {
+        fetchPokemon() {
 
-            axios
-                .get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
-                .then((response) => {
-                    this.pokemons = response.data;
+            const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
+
+            const pokemonPromises = []
+
+            for (let i = 1; i <= 150; i++) {
+                pokemonPromises.push(fetch(getPokemonUrl(i)).then(response => response.json()))
+            }
+
+            Promise.all(pokemonPromises)
+                .then(pokemons => {
+                    this.pokemons = pokemons
+                    console.log(this.pokemons)
                 })
-                .catch(() => {
-
-                });
 
         }
 
