@@ -15,7 +15,8 @@ export default {
 <style lang="scss" scoped>
 
 .slider {
-    width: 80%;
+    width: 90%;
+    margin: 0 30px;
 
     img {
         width: 100%;

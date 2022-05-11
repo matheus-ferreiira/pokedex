@@ -4,7 +4,7 @@
 		<NavBar />
 		<div class="main">
 			<Sidebar />
-			<div>
+			<div class="container">
 				<Slider />
 				<ListPokemon />
 			</div>
@@ -36,8 +36,19 @@ export default {
 
 <style lang="scss" scoped>
 
+.home {
+	background-color: #fff5;
+}
+
 .main {
-	display: flex;
+	display: grid;
+	grid-template-columns: 20% 80%;
+	height: calc(100vh - 100px);
+	overflow: hidden;
+
+	.container {
+		overflow: auto;
+	}
 }
 
 </style>
