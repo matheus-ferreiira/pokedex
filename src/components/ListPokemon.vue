@@ -12,9 +12,17 @@
                 {{ pokemon.name }}
             </div>
 
-            <div class="types" v-for="(type, i) in pokemon.types" :key="i">
-                <div v-for="(type_name, i) in type" :key="i">
-                    {{ type_name.name }}
+            <div class="pokemon-id">
+               Nº {{ pokemon.id }}
+            </div>
+
+            <div class="types">
+                <div v-for="(type, i) in pokemon.types" :key="i">
+                    <div v-for="(type_name, i) in type" :key="i">
+                        <div>
+                            {{ type_name.name }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,6 +85,11 @@ export default {
 
         .image img {
             width: 200px;
+        }
+
+        .types {
+            display: flex;
+            justify-content: space-around;
         }
     }
 }

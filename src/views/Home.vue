@@ -2,10 +2,12 @@
 
 	<div class="home">
 		<NavBar />
+		
 		<div class="main">
 			<Sidebar />
+
 			<div class="container">
-				<Slider />
+				<!-- <Slider /> -->
 				<ListPokemon />
 			</div>
 		</div>
@@ -43,7 +45,7 @@ export default {
 .main {
 	display: grid;
 	grid-template-columns: 20% 80%;
-	height: calc(100vh - 100px);
+	height: calc(100vh - 80px);
 	overflow: hidden;
 
 	.container {

@@ -1,7 +1,12 @@
 <template>
-	<nav>
+	<nav class="navbar">
 		<div class="img">
 			<img src="../../public/img/logo.png" alt="">
+		</div>
+
+		<div class="search">
+			<input type="text">
+			<button></button>
 		</div>
 	</nav>
 </template>
@@ -17,8 +22,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-nav {
+
+.navbar {
 	height: 80px;
+	display: grid;
+	grid-template-columns: 20% 80%;
+	text-align: center;
+	align-items: center;
+	box-shadow: 0px 0px 10px 3px #000;;
+
+	.search {
+
+		input {
+			width: 80%;
+		}
+	}
 	
 	.img {
 		img {

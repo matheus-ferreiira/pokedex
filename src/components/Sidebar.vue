@@ -1,11 +1,29 @@
 <template>
     <div class="sidebar">
-        <ul class="item-sidebar">
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
+        <ul class="items-sidebar">
+            <li class="item">
+
+            </li>
+
+            <li class="item">
+                <i class="fas fa-apple-alt"></i>
+                BERRIES
+            </li>
+
+            <li class="item">
+                <i class="fas fa-briefcase"></i>
+                <span>ITENS</span>
+            </li>
+
+            <li class="item">
+                <i class="fas fa-compact-disc"></i>
+                <span>ATAQUES</span> 
+            </li>
+
+            <li class="item">
+                <i class="fas fa-globe-africa"></i>
+                <span>LOCALIZAÇÕES</span>
+            </li>
         </ul>
     </div>
 </template>
@@ -25,7 +43,11 @@ export default {
 .sidebar {
     height: 100vh;
     background-color: #fff;
-    box-shadow: 0 0 0 10px #000;
+    box-shadow: 0px 0px 10px 3px #000;
+
+    .items-sidebar {
+        list-style: none;
+    }
 }
 
 </style>
