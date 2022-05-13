@@ -17,7 +17,7 @@
 
             <li class="item">
                 <i class="fas fa-compact-disc"></i>
-                <span>ATAQUES</span> 
+                <span>ATAQUES</span>
             </li>
 
             <li class="item">

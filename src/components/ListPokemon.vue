@@ -1,26 +1,28 @@
 <template>
     <div class="list-pokemon">
         <div class="card-pokemon" v-for="(pokemon, i) in pokemons" :key="i">
-            <!-- <div class="background"> -->
-                <div class="image">
-                    <img :src="pokemon.sprites.front_default"
-                    :alt="pokemon.name">
+            <div class="background">
+                <div class="pokemon-id">
+                    Nº {{ pokemon.id }}
                 </div>
-            <!-- </div> -->
-
-            <div class="name">
-                {{ pokemon.name }}
             </div>
 
-            <div class="pokemon-id">
-               Nº {{ pokemon.id }}
+            <div class="image">
+                <img :src="pokemon.sprites.other.dream_world.front_default"
+                :alt="pokemon.name">
             </div>
 
-            <div class="types">
-                <div v-for="(type, i) in pokemon.types" :key="i">
-                    <div v-for="(type_name, i) in type" :key="i">
-                        <div>
-                            {{ type_name.name }}
+            <div class="info-pokemon">
+                <div class="name">
+                    {{ pokemon.name }}
+                </div>
+
+                <div class="types">
+                    <div v-for="(type, i) in pokemon.types" :key="i">
+                        <div v-for="(type_name, i) in type" :key="i">
+                            <div>
+                                {{ type_name.name }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +37,26 @@ export default {
     name: 'ListPokemon',
 
     data: () => ({
-        pokemons: []
+        pokemons: [],
+
+        typeColor : {
+            bug: "#26de81",
+            dragon: "#ffeaa7",
+            electric: "#fed330",
+            fairy: "#ff0069",
+            fighting: "#30336b",
+            fire: "#f0932b",
+            flying: "#81ecec",
+            grass: "#00b894",
+            ground: "#efb549",
+            ghost: "#a55eea",
+            ice: "#74b9ff",
+            normal: "#95afc0",
+            poison: "#6c5ce7",
+            psychic: "#a29bfe",
+            rock: "#2d3436",
+            water: "#0190ff"
+        }
     }),
 
     created() {
@@ -55,6 +76,8 @@ export default {
             Promise.all(pokemonPromises)
                 .then(pokemons => {
                     this.pokemons = pokemons;
+
+                    const themeColor = this.typeColor[this.pokemons[0].types[0].type.name];
                 });
         }
     }
@@ -66,7 +89,7 @@ export default {
 .list-pokemon {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 30px;
     margin: 30px;
 
     .card-pokemon {
@@ -77,19 +100,48 @@ export default {
         min-height: 300px;
 
         .background {
-            width: 100%;
-            height: 100px;
-            background-color: #000;
-            border-radius: 0 0 500px 500px;
+                width: 100%;
+                background: blue;
+                height: 170px;
+                padding-top: 15px;
+                border-radius: 10px 10px 200px 200px;
+
+            .pokemon-id {
+                width: 80px;
+                background-color: #fff;
+                text-align: center;
+                padding: 8px 0;
+                border-radius: 30px;
+                margin-right: 15px;
+                margin-left: auto;
+                font-weight: bold;
+            }
         }
 
-        .image img {
-            width: 200px;
+        .info-pokemon {
+            margin: 20px;
+            
+            .name {
+                font-size: 20px;
+                font-weight: bold;
+                margin: 20px;
+            }
+
+            .types {
+                display: flex;
+                justify-content: space-around;
+            }
         }
 
-        .types {
-            display: flex;
-            justify-content: space-around;
+        .image  {
+            margin-top: -150px;
+
+            img {
+                display: block;
+                width: 180px;
+                height: 200px;
+                margin: 20px auto;
+            }
         }
     }
 }
