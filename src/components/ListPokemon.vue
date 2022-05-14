@@ -87,6 +87,20 @@ export default {
 
 <style lang="scss" scoped>
 
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+
+    50% {
+        transform: translatey(-30px);
+    }
+
+    100% {
+        transform: translatey(0px);
+    }
+}
+
 .list-pokemon {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -99,9 +113,38 @@ export default {
         width: 100%;
         text-align: center;
         min-height: 300px;
+        overflow: hidden;
 
-        &::before {
-            background: red;
+        &:hover {
+            .background {
+                height: 100%;
+                transition: 1s ease-in;
+                border-radius: 10px;
+            }
+
+            .image {
+                margin-top: -360px;
+                transition: 1s ease-in;
+
+                img {
+                    transform: translatey(0px);
+                    animation: float 3s ease-in-out infinite;
+                }
+            }
+
+            .info-pokemon {
+                .name {
+                    color: #fff;
+                    transition: 1s ease-in;
+                }
+
+                .types {
+                    .type {
+                        border: 1px solid #fff;
+                        transition: 1s ease-in;
+                    }
+                }
+            }
         }
 
         .background {
