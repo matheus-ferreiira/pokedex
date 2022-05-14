@@ -1,28 +1,26 @@
 <template>
     <div class="list-pokemon">
         <div class="card-pokemon" v-for="(pokemon, i) in pokemons" :key="i">
-            <div class="background">
+            <div class="background" :style="{ backgroundColor: pokemon.cor }">
                 <div class="pokemon-id">
                     Nº {{ pokemon.id }}
                 </div>
             </div>
 
             <div class="image">
-                <img :src="pokemon.sprites.other.dream_world.front_default"
-                :alt="pokemon.name">
+                <img loading="lazy" :src="pokemon.sprites.other.dream_world.front_default"
+                :alt="(pokemon.name)">
             </div>
 
             <div class="info-pokemon">
                 <div class="name">
-                    {{ pokemon.name }}
+                    {{ pokemon.name.toUpperCase() }}
                 </div>
 
                 <div class="types">
                     <div v-for="(type, i) in pokemon.types" :key="i">
-                        <div v-for="(type_name, i) in type" :key="i">
-                            <div>
-                                {{ type_name.name }}
-                            </div>
+                        <div class="type" :class="type.type.name">
+                            {{ type.type.name }}
                         </div>
                     </div>
                 </div>
@@ -44,7 +42,7 @@ export default {
             dragon: "#ffeaa7",
             electric: "#fed330",
             fairy: "#ff0069",
-            fighting: "#30336b",
+            fighting: "#ff0000",
             fire: "#f0932b",
             flying: "#81ecec",
             grass: "#00b894",
@@ -77,7 +75,10 @@ export default {
                 .then(pokemons => {
                     this.pokemons = pokemons;
 
-                    const themeColor = this.typeColor[this.pokemons[0].types[0].type.name];
+                    this.pokemons.map(pokemon => {
+                        pokemon.cor = this.typeColor[pokemon.types[0].type.name]
+                        return pokemon
+                    });
                 });
         }
     }
@@ -99,12 +100,15 @@ export default {
         text-align: center;
         min-height: 300px;
 
+        &::before {
+            background: red;
+        }
+
         .background {
-                width: 100%;
-                background: blue;
-                height: 170px;
-                padding-top: 15px;
-                border-radius: 10px 10px 200px 200px;
+            width: 100%;
+            height: 170px;
+            padding-top: 15px;
+            border-radius: 10px 10px 200px 200px;
 
             .pokemon-id {
                 width: 80px;
@@ -130,6 +134,14 @@ export default {
             .types {
                 display: flex;
                 justify-content: space-around;
+
+                .type {
+                    border-radius: 15px;
+                    padding: 10px 20px;
+                    font-weight: bold;
+                    font-size: 16px;
+                    color: #fff;
+                }
             }
         }
 
@@ -145,5 +157,69 @@ export default {
         }
     }
 }
+
+.bug {
+    background: #26de81;
+}
+
+.dragon {
+    background: #ffeaa7;
+}
+
+.electric {
+    background: #fed330;
+}
+
+.fairy {
+    background: #ff0069;
+}
+
+.fighting {
+    background: #ff0000;
+}
+
+.fire {
+    background: #f0932b;
+}
+
+.flying {
+    background: #81ecec;
+}
+
+.grass {
+    background: #00b894;
+}
+
+.ground {
+    background: #efb549;
+}
+
+.ghost {
+    background: #a55eea;
+}
+
+.ice {
+    background: #74b9ff;
+}
+
+.normal {
+    background: #95afc0;
+}
+
+.poison {
+    background: #6c5ce7;
+}
+
+.psychic {
+    background: #a29bfe;
+}
+
+.rock {
+    background: #2d3436;
+}
+
+.water {
+    background: #0190ff;
+} 
 
 </style>
