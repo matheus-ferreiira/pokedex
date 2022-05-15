@@ -76,8 +76,8 @@ export default {
                     this.pokemons = pokemons;
 
                     this.pokemons.map(pokemon => {
-                        pokemon.cor = this.typeColor[pokemon.types[0].type.name]
-                        return pokemon
+                        pokemon.cor = this.typeColor[pokemon.types[0].type.name];
+                        return pokemon;
                     });
                 });
         }
@@ -251,6 +251,7 @@ export default {
 
 .poison {
     background: #6c5ce7;
+    background-image: url(../../public/img/poison.png);
 }
 
 .psychic {

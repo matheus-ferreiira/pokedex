@@ -2,7 +2,8 @@
     <div class="sidebar">
         <ul class="items-sidebar">
             <li class="item">
-
+                <img src="../../public/img/icon_pokemons.png" alt="">
+                POKEMONS
             </li>
 
             <li class="item">
