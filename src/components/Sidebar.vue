@@ -2,13 +2,13 @@
     <div class="sidebar">
         <ul class="items-sidebar">
             <li class="item">
-                <img src="../../public/img/icon_pokemons.png" alt="">
-                POKEMONS
+                <img src="../../public/img/icon-pokebolas.png" alt="">
+                <span>POKEMONS</span>
             </li>
 
             <li class="item">
                 <i class="fas fa-apple-alt"></i>
-                BERRIES
+                <span>BERRIES</span>
             </li>
 
             <li class="item">
@@ -48,6 +48,28 @@ export default {
 
     .items-sidebar {
         list-style: none;
+        padding: 0;
+        margin: 20px;
+
+        .item {
+            display: flex;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 25px 0;
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            align-items: center;
+            border: 1px solid #ff0000;
+
+            img {
+                width: 20px;
+            }
+            
+            span {
+                margin-left: 10px;
+            }
+        }
     }
 }
 
