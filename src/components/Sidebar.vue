@@ -62,6 +62,11 @@ export default {
             align-items: center;
             border: 1px solid #ff0000;
 
+            &:hover {
+                background-color: #ff0000;
+                color: #fff;
+            }
+
             img {
                 width: 20px;
             }
