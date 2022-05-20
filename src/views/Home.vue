@@ -4,12 +4,7 @@
 		<NavBar />
 		
 		<div class="main">
-			<Sidebar />
-
-			<div class="container">
-				<!-- <Slider /> -->
-				<ListPokemon />
-			</div>
+			<ListPokemon />
 		</div>
 	</div>
 
@@ -20,7 +15,6 @@
 import NavBar from '@/components/NavBar.vue'
 import ListPokemon from '@/components/ListPokemon.vue'
 import Slider from '@/components/Slider.vue'
-import Sidebar from '@/components/Sidebar.vue'
 
 export default {
 
@@ -30,7 +24,6 @@ export default {
 		NavBar,
 		ListPokemon,
 		Slider,
-		Sidebar
 	}
 }
 
@@ -42,15 +35,5 @@ export default {
 	background-color: #fff5;
 }
 
-.main {
-	display: grid;
-	grid-template-columns: 20% 80%;
-	height: calc(100vh - 80px);
-	overflow: hidden;
-
-	.container {
-		overflow: auto;
-	}
-}
 
 </style>

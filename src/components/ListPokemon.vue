@@ -103,7 +103,7 @@ export default {
 
 .list-pokemon {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     margin: 30px;
 
@@ -112,8 +112,9 @@ export default {
         box-shadow: 0px 0px 8px 0px #000;
         width: 100%;
         text-align: center;
-        min-height: 300px;
+        min-height: 200px;
         overflow: hidden;
+        cursor: pointer;
 
         &:hover {
             .background {
@@ -123,7 +124,7 @@ export default {
             }
 
             .image {
-                margin-top: -360px;
+                margin-top: -310px;
                 transition: 1s ease-in;
 
                 img {
@@ -193,8 +194,8 @@ export default {
 
             img {
                 display: block;
-                width: 180px;
-                height: 200px;
+                width: 150px;
+                height: 150px;
                 margin: 20px auto;
             }
         }
