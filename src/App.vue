@@ -13,7 +13,7 @@
 
 * {
 	margin: 0;
-	font-family: monospace;
+	font-family: Montserrat, sans-serif;
 }
 
 </style>

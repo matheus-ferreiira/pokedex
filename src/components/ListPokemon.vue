@@ -105,16 +105,17 @@ export default {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
-    margin: 30px;
+    margin: -90px 30px 30px 30px;
 
     .card-pokemon {
         border-radius: 10px;
-        box-shadow: 0px 0px 8px 0px #000;
+        box-shadow: 0px 0px 8px 0px rgb(113, 113, 113);
         width: 100%;
         text-align: center;
         min-height: 200px;
         overflow: hidden;
         cursor: pointer;
+        background-color: #fff;
 
         &:hover {
             .background {
@@ -252,7 +253,6 @@ export default {
 
 .poison {
     background: #6c5ce7;
-    background-image: url(../../public/img/poison.png);
 }
 
 .psychic {
